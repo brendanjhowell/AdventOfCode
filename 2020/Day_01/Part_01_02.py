@@ -2,7 +2,7 @@
 #Initialize
 
 #import expense report values
-expense_report = open("C:/Users/brend/Documents/Github/AdventOfCode/2020/Day_01/expense_report.txt", "r")
+expense_report = open("expense_report.txt", "r")
 p = expense_report.read().splitlines()
 p_int = list(map(int, p))
 
