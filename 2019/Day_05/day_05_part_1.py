@@ -1,11 +1,9 @@
 
+#Note: This is confirmed broken, will be completed later. (12/01/2020)
 
 diagnostic_program = list(open("diagnostic_program.txt", "r"))
 
 prog = [int(x) for x in diagnostic_program[0].split(",")]
-
-
-
 
 #Goal
 g = 19690720
@@ -32,18 +30,18 @@ def outputFind(p, g):
     verb = 0
     v = 0
     while v <= g:
-        p_ref = [int(x) for x in p_str]
+        p_ref = [int(x) for x in p]
         p_ref[1] = noun
         p_ref[2] = verb
         #print(noun)
         v = intcodeProgram(p_ref)
-        #print(v)
+        print(v)
         noun+=1
     #Backtrack Adjustment
     noun-=2
     v = 0
     while v <= g:
-        p_ref = [int(x) for x in p_str]
+        p_ref = [int(x) for x in p]
         p_ref[1] = noun
         p_ref[2] = verb
         v = intcodeProgram(p_ref)
@@ -54,4 +52,4 @@ def outputFind(p, g):
 
     return 100*noun + verb
 
-print(outputFind(p, g))
+print(outputFind(prog, g))

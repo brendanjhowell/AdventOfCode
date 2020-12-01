@@ -1,6 +1,6 @@
 
 
-wire_path_coordinates = open("C:/Users/brend/Downloads/Advent of Code/2019/Day_03/mh_distance_coordinates.txt", "r")
+wire_path_coordinates = open("mh_distance_coordinates.txt", "r")
 
 total_w_path = wire_path_coordinates.read().splitlines()#.split(",")
 

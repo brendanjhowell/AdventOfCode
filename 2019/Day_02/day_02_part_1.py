@@ -1,4 +1,4 @@
-gravity_assist_program = open("C:/Users/brend/Downloads/Advent of Code/2019/Day_02/gravity_assist_program.txt", "r")
+gravity_assist_program = open("gravity_assist_program.txt", "r")
 
 p_str = gravity_assist_program.read().split(",")
 p = [int(x) for x in p_str]
