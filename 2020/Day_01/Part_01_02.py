@@ -1,5 +1,10 @@
 
 #Initialize
+import os
+try:
+    os.chdir('./2020/Day_01')
+except:
+    pass
 
 #import expense report values
 expense_report = open("expense_report.txt", "r")
