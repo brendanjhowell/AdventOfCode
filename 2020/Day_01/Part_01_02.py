@@ -7,8 +7,8 @@ except:
     pass
 
 #import expense report values
-expense_report = open("expense_report.txt", "r")
-p = expense_report.read().splitlines()
+with open("expense_report.txt", "r") as f:
+    p = f.read().splitlines()
 p_int = list(map(int, p))
 
 #sort expense report values
