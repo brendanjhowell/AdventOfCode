@@ -1,6 +1,4 @@
-
 #Initialize
-
 import os
 try:
     os.chdir('./2020/Day_02')
