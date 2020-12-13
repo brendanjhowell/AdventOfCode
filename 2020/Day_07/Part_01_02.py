@@ -6,7 +6,7 @@ except:
     pass
 
 #import seating_assignments
-with open("luggage_rules_example.txt", "r") as f:
+with open("luggage_rules.txt", "r") as f:
     r = f.read().splitlines()
 
 bags_dict = {}
@@ -32,7 +32,7 @@ while i < len(r):
 
     i+=1
 
-print(bags_dict)
+#print(bags_dict)
 
 #Part 01:
 ##How many bag colors can eventually contain at least one bag of desired color?
@@ -48,30 +48,22 @@ def containedBagTypeCounter(bag_rules, desired_bag_type, all_level_bags):
     return len(all_level_bags)
 
 bag_type = "shiny gold"
-##print(containedBagTypeCounter(bag_rules = bags_dict, desired_bag_type = bag_type, all_level_bags = []))
+print(containedBagTypeCounter(bag_rules = bags_dict, desired_bag_type = bag_type, all_level_bags = []))
 #Ans. 302
 
 #Part 02:
 ##How many individual bags are required inside your bag of desired color?
-def totalBagsWithinDesiredBag(bag_rules, desired_bag_type, bag_count, next_bag_multiplier):
-    for key, val in bag_rules.items():
-        if key == desired_bag_type:
-            print(val, "arriving", next_bag_multiplier)
-            i = 0
-            while i < len(val):
-                if val[i] != "None":
-                    print("before:", val[i][1], val[i][0], bag_count, next_bag_multiplier)
-                    bag_count+=int(val[i][0])*next_bag_multiplier
-                    next_bag_multiplier = int(val[i][0])
-                    print("after:", val[i][1], val[i][0], bag_count, next_bag_multiplier)
-                    totalBagsWithinDesiredBag(bag_rules = bag_rules, desired_bag_type = val[i][1], bag_count = bag_count, next_bag_multiplier = next_bag_multiplier)
-                else:
-                    next_bag_multiplier = 200
-                    print("empty bag")
-                i+=1
-            print(val, "leaving", next_bag_multiplier)
-    return bag_count
+def totalBagsWithinDesiredBag(bag_rules, desired_bag_type):
+    child_bags = bag_rules.get(desired_bag_type, None)
+    if child_bags[0] == "None":
+        return 0
+    else:
+        bag_count = 0
+        for c in child_bags:
+                bag_count += int(c[0])*(1+totalBagsWithinDesiredBag(bag_rules = bag_rules, desired_bag_type = c[1]))
+        return bag_count
+
 
 bag_type = "shiny gold"
-print(totalBagsWithinDesiredBag(bag_rules = bags_dict, desired_bag_type = bag_type, bag_count = 0, next_bag_multiplier = 1))
-#Ans.
+print(totalBagsWithinDesiredBag(bag_rules = bags_dict, desired_bag_type = bag_type))
+#Ans. 4165
