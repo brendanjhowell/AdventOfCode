@@ -1,6 +1,5 @@
 #initialize
 import os
-from re import I
 try:
     os.chdir('./2021/Day_03')
 except:
