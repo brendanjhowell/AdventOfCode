@@ -52,6 +52,7 @@ print("Part #01:", maxCaloriesElf(totalCaloriesCalculator(elves_calories)))
 
 
 ##Part 02: Find the top three Elves carrying the most Calories. How many Calories are those Elves carrying in total?
+### My approach here is very dumb. Rather than using a heap sort to find the top 'N' elves with the highest total calories, I recursively make use of maxCaloriesElf 'N' times, removing the elf with the highest calorie total before each function call. It works, but this is bad.
 
 #create function maxCaloriesElves_N - takes hash table of {key:elf_num, int:totalcalories} & n (top N elves) as input
 def maxCaloriesElves_N(elves_totalcalories, n, curr_max_dict):
